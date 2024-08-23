@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: navicat://conn.mysql?Conn.Host=localhost&Conn.Name=example-springboot-learn&Conn.Port=3306&Conn.UseHTTP=false&Conn.UseSSH=false&Conn.UseSSL=false&Conn.UseSocketFile=false&Conn.Username=root
+    username: root
+    password: root
+    hikari:
+      connection-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 600000
+      pool-name: DataSourceHikariCP
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+  servlet:
+    multipart:
+      max-file-size: 500KB
+      max-request-size: 2MB
+  banner:
+      location: classpath:banner/banner.txt
+
+mybatis:
+  type-aliases-package: com.example.pojo
+  mapper-locations: classpath:mappers/*.xml
+
+mapper:
+  mappers: com.example.my.mapper.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+pagehelper:
+  helper-dialect: mysql
+  support-methods-arguments: true
